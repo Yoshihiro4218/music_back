@@ -1,5 +1,6 @@
 package music.music.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import music.music.form.MusicCreateForm;
 import music.music.service.MusicService;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @CrossOrigin
 @Controller
+@Slf4j
 public class MusicController {
     @GetMapping(value = "/musics")
     @ResponseBody
@@ -23,7 +25,7 @@ public class MusicController {
 
     @PostMapping("/musics")
     @ResponseBody
-    public void postMusic(MusicCreateForm form){
+    public void postMusic(@Validated MusicCreateForm form){
         MusicService.insertMusicData(form);
 
     }

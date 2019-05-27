@@ -27,13 +27,11 @@ public class MusicService {
     }
 
     public static void insertMusicData(MusicCreateForm data) {
-        System.out.println(data.getAlbumName());
-
-//        String sql = "INSERT INTO music (music_name, artist_name, album_name) VALUES (?, ?, ?)";
-//        jdbcTemplate.update(sql, new Object[]{
-//                data.get("music_name"),
-//                data.get("artist_name"),
-//                data.get("album_name")
-//        });
+        String sql = "INSERT INTO music (music_name, artist_name, album_name) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, new Object[]{
+                data.getMusicName(),
+                data.getArtistName(),
+                data.getAlbumName()
+        });
     }
 }
