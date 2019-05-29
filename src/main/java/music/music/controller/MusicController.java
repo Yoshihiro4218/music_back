@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 @Slf4j
 public class MusicController {
-    @GetMapping(value = "/musics")
+    @GetMapping("/musics")
     @ResponseBody
     public List<Map<String, Object>> getMusicList(){
         return MusicService.musicList();
@@ -28,5 +28,10 @@ public class MusicController {
     public void postMusic(@Validated MusicCreateForm form){
         MusicService.insertMusicData(form);
 
+    }
+    @DeleteMapping("/musics/{id}")
+    @ResponseBody
+    public void deleteMusic(@PathVariable("id") int musicId){
+        MusicService.deleteMusic(musicId);
     }
 }

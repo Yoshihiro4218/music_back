@@ -28,10 +28,15 @@ public class MusicService {
 
     public static void insertMusicData(MusicCreateForm data) {
         String sql = "INSERT INTO music (music_name, artist_name, album_name) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, new Object[]{
+        jdbcTemplate.update(sql,
                 data.getMusicName(),
                 data.getArtistName(),
                 data.getAlbumName()
-        });
+        );
+    }
+
+    public static void deleteMusic(int musicId){
+        String sql = "DELETE FROM music WHERE id = ?";
+        jdbcTemplate.update(sql, musicId);
     }
 }
