@@ -29,27 +29,4 @@ public class MusicController {
         MusicService.insertMusicData(form);
 
     }
-
-
-
-
-//    @ModelAttribute
-//    MusicCreateForm setUpForm() {
-//        return new MusicCreateForm();
-//    }
-
-
-//    @RequestMapping(value = "/musics",
-//            method = RequestMethod.POST,
-//            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    public void create(@RequestBody Map<String, Object> data){
-//            MusicService.insertMusic(data);
-//        }
-
-
-//    @RequestMapping(value = "/musics", method = RequestMethod.GET)
-//    public String index(){
-//        return "水樹奈々だよぉ！";
-//    }
-
 }
