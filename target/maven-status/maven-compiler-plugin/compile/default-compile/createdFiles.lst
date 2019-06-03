@@ -1,3 +1,4 @@
+music/music/form/MusicCreateForm.class
 music/music/MusicApplication.class
 music/music/service/MusicService.class
 music/music/controller/MusicController.class

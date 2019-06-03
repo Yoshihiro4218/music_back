@@ -26,6 +26,12 @@ public class MusicService {
         return musicList;
     }
 
+    public static List<Map<String, Object>> showMusic(int musicId) {
+        List<Map<String, Object>> musicDetail = jdbcTemplate.queryForList("SELECT * FROM music WHERE id = ?", musicId);
+        musicDetail.forEach(System.out::println);
+        return musicDetail;
+    }
+
     public static void insertMusicData(MusicCreateForm data) {
         String sql = "INSERT INTO music (music_name, artist_name, album_name) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql,
@@ -38,5 +44,15 @@ public class MusicService {
     public static void deleteMusic(int musicId){
         String sql = "DELETE FROM music WHERE id = ?";
         jdbcTemplate.update(sql, musicId);
+    }
+
+    public static void updateMusicData(MusicCreateForm data, int musicId) {
+        String sql = "UPDATE music SET music_name = ?, artist_name = ?, album_name = ? WHERE id = ?";
+        jdbcTemplate.update(sql,
+                data.getMusicName(),
+                data.getArtistName(),
+                data.getAlbumName(),
+                musicId
+        );
     }
 }

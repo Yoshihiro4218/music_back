@@ -19,13 +19,19 @@ import java.util.List;
 public class MusicController {
     @GetMapping("/musics")
     @ResponseBody
-    public List<Map<String, Object>> getMusicList(){
+    public List<Map<String, Object>> getMusic(){
         return MusicService.musicList();
+    }
+
+    @GetMapping("/musics/{id}")
+    @ResponseBody
+    public List<Map<String, Object>> showMusic(@PathVariable("id") int musicId){
+        return MusicService.showMusic(musicId);
     }
 
     @PostMapping("/musics")
     @ResponseBody
-    public void postMusic(@Validated MusicCreateForm form){
+    public void createMusic(@Validated MusicCreateForm form){
         MusicService.insertMusicData(form);
 
     }
@@ -33,5 +39,11 @@ public class MusicController {
     @ResponseBody
     public void deleteMusic(@PathVariable("id") int musicId){
         MusicService.deleteMusic(musicId);
+    }
+
+    @PutMapping("/musics/{id}")
+    @ResponseBody
+    public void updateMusic(@PathVariable("id") int musicId, MusicCreateForm form){
+        MusicService.updateMusicData(form, musicId);
     }
 }
