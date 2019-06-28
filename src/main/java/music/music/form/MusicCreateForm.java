@@ -16,5 +16,7 @@ public class MusicCreateForm {
     private String artistName;
     @NotBlank
     private String albumName;
+    @NotBlank
+    private int good;
 
 }
